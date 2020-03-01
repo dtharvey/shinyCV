@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<body>
+  
+<style>
+li { padding: 10px 0px 0px; }
+li:first-child { margin-bottom: 0px; }  
+</style>
+
+<h4>Getting Started</h4>
+
+<ol>
+  <li>In his article "Understanding Electrochemistry: Some Distinctive Concepts" (<em>J. Chem. Educ.</em> <b>1983</b>, <em>60(4)</em>, 262-264, <a href = http://pubs.acs.org/doi/abs/10.1021/ed060p262>DOI)</a>, Larry Faulkner provides a list of five concepts that are important to understanding electrochemistry:
+  <ul>
+    <li>an electrochemical system is not homogeneous</li>
+    <li>many things can happen at once</li>
+    <li>current is an expression of rate</li>
+    <li>potential is an expression of electron energy</li>
+    <li>one cannot control both current and potential simultaneously</li>
+  </ul>
+  Locate a copy of the article and, for each concept, summarize Faulkner's point and explain why it is crucial to understanding what happens during a cyclic voltammetry experiment.</li>
+  <li>The current in an electrochemical experiment is described as cathodic or anodic. What is the difference between these two types of currents? If a current flows when the potential is scanned from a more positive value to a more negative value, is the current cathodic or anodic?</li>
+  <li>A redox couple consists of an oxidized species and a reduced species, such as Fe<sup>3+</sup> and Fe<sup>2+</sup>, and is characterized by a standard state reduction potential, <em>E</em><sup>o</sup>, which for the Fe<sup>3+</sup>/Fe<sup>2+</sup> redox couple is +0.771 V. Write the reaction that corresponds to this potential and the corresponding Nernst equation. What can you say about the relative concentrations of Fe<sup>3+</sup> and Fe<sup>2+</sup> when the potential is +0.771 V? +0.551 V? +0.991 V?</li>
+  <li>As indicated on the <b><em>Parameters</em></b> tab and by the controls for each mechanism, the simulations use the standard state formal reduction potential, <em>E</em><sup>o</sup>&prime; instead of the standard state potential, <em>E</em><sup>o</sup>. What is the difference between <em>E</em><sup>o</sup> and <em>E</em><sup>o</sup>&prime; and why is this difference important? In 0.3 M H<sub>3</sub>PO<sub>4</sub>, the standard state formal potential for the Fe<sup>3+</sup>/Fe<sup>2+</sup> redox couple is +0.44 V. What does this imply about the ease of reducing Fe<sup>3+</sup> to Fe<sup>2+</sup> in H<sub>3</sub>PO<sub>4</sub> relative to its reduction in water?</li>
+</ol>
+
+<h4>Mechanism: E</h4>
+
+<ol>
+  <li>Beginning with the default conditions for the reaction Ox --> Red, determine the quantitative relationship between the cathodic peak current, i<sub>p,c</sub>, and the bulk concentration of Ox. Repeat for the number of electrons (<em>n</em>), the electrode's surface area (<em>A</em>), the diffusion coefficient (<em>D</em>), and the scan rate (&nu;). Explain your observations and propose a general equation that relates the cathodic peak current to these parameters.</li>
+  <li>Beginning with the default conditions for the reaction Ox --> Red, use the slider below the applied waveform to examine the diffusion profiles for Ox and Red at times of 0, 0.2, 0.5, 0.8, 1.0, 1.3, 1.5, 1.8 and 2.0 seconds. Explain how and why the shape of the diffusion profile for Ox changes as you change the time. What is the relationship between the diffusion profile for Ox and the magnitude and sign of the current?</li>
+  <li>How does changing the initial direction from Ox --> Red to Red --> Ox affect the cyclic voltammogram and the diffusion profiles?</li>
+  <li>The cyclic voltammogram is annotated with a set of characteristic values: the cathodic peak current, <em>i</em><sub>p,c</sub>, and peak potential, <em>E</em><sub>p,c</sub>, the anodic peak current, <em>i</em><sub>p,a</sub>, and peak potential, <em>E</em><sub>p,a</sub>, the difference between the peak potentials, &Delta; <em>E</em>, the average peak potential, <em>E</em><sub>avg</sub>, and the ratio of the peak currents, |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| or |<em>i</em><sub>p,c</sub>/<em>i</em><sub>p,a</sub>|. For the default values, the average peak potential is 0.000 V. What does this value represent? Verify your answer by adjusting one or more of the simulation's available parameters.</li>
+   <li>When using the default conditions, the theoretical value for |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| is 1.00 for Ox --> Red, and the theoretical value for &Delta; <em>E</em> is 0.059 V. While maintaining the scan rate at 10<sup>0</sup> V/s, determine the values for |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> for <em>k</em><sup>o</sup> values of 10<sup>-3</sup>, 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and 10<sup>3</sup> cm/s. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+   <li>While maintaining <em>k</em><sup>o</sup> at 10<sup>0</sup> cm/s, determine the values for |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> for scan rates of 10<sup>-3</sup>, 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, and 10<sup>3</sup> V/s. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+   <li>The reaction in a cyclic voltammetry experiment often is described in terms of electrochemical reversibility. In light of your responses to the previous two questions, explain what it means for a reaction to be electrochemically reversible. What criteria can you use to determine if a reaction is electrochemically reversible?</li>
+   <li>Predict the relative values of |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> for a cyclic voltammogram recorded using a scan rate of 10<sup>2</sup> V/s and a <em>k</em><sup>o</sup> of 10<sup>-2</sup> cm/s, recorded using a scan rate of 10<sup>-2</sup> V/s and a <em>k</em><sup>o</sup> of 10<sup>2</sup> cm/s. Explain the reasons for your predictions. Run the simulations and evaluate your predictions.</li>
+</ol>
+
+<h4>Mechanism: EC</h4>
+
+<ol>
+  <li>While maintaining the scan rate at 10<sup>0</sup> V/s, <em>k</em><sup>o</sup> at 10<sup>0</sup> cm/s, and <em>k</em><sub>chem,r</sub> at 10<sup>0</sup> s<sup>-1</sup>, determine |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> using values of 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, and 10<sup>2</sup> s<sup>-1</sup> for <em>k</em><sub>chem,f</sub>. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+  <li>While maintaining the scan rate at 10<sup>0</sup> V/s, <em>k</em><sup>o</sup> at 10<sup>0</sup> cm/s, and <em>k</em><sub>chem,f</sub> at 10<sup>0</sup> s<sup>-1</sup>, determine |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> using values of 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, and 10<sup>2</sup> s<sup>-1</sup> for <em>k</em><sub>chem,r</sub>. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+  <li>In addition to electrochemical reversibility, a cyclic voltammogram may show chemically reversible or chemically irreversible behavior. In light of your response to the previous two questions, explain what it means for a reaction to be chemically reversible. What criteria can you use to determine if a reaction is chemically reversible?</li>
+  <li>For scan rates of 10<sup>0</sup> and 10<sup>2</sup>, predict the relative values of |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> when <em>k</em><sub>chem,f</sub> is set to 10<sup>1</sup> s<sup>-1</sup> and <em>k</em><sub>chem,r</sub> set to 10<sup>-1</sup> s<sup>-1</sup>. Leave all other parameters at their default values. Explain the reasons for your predictions. Run the simulations and evaluate your predictions.</li>
+</ol>
+
+<h4>Mechanism: CE</h4>
+
+<ol>
+  <li>While maintaining the scan rate at 10<sup>0</sup> V/s, <em>k</em><sup>o</sup> at 10<sup>0</sup> cm/s, and <em>k</em><sub>chem,r</sub> at 10<sup>0</sup> s<sup>-1</sup>, determine |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> using values of 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, and 10<sup>2</sup> s<sup>-1</sup> for <em>k</em><sub>chem,f</sub>. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+  <li>While maintaining the scan rate at 10<sup>0</sup> V/s, <em>k</em><sup>o</sup> at 10<sup>0</sup> cm/s, and <em>k</em><sub>chem,f</sub> determine |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>| and &Delta; <em>E</em> using values of 10<sup>-2</sup>, 10<sup>-1</sup>, 10<sup>0</sup>, 10<sup>1</sup>, and 10<sup>2</sup> s<sup>-1</sup> for <em>k</em><sub>chem,r</sub>. Describe the trends you see in these results and explain why they occur. <em>Note: Be sure to review the discussion of accuracy for these simulations on the <b>Computational Details</b> tab</em>.</li>
+  <li>With <em>k</em><sup>o</sup> set to 10<sup>3</sup> cm/s, <em>k</em><sub>chem,f</sub> set to 10<sup>2</sup> s<sup>-1</sup>, and <em>k</em><sub>chem,r</sub> set to 10<sup>-2</sup> s<sup>-1</sup>, predict how increasing the scan rate from 10<sup>0</sup> V/s to 10<sup>2</sup> V/s will affect the shape and the characteristic values of the cyclic voltammogram. Explain the reasons for your predictions. Run the simulations and evaluate your predictions.</li>
+</ol>
+
+<h4>Wrapping Up</h4>
+
+<ol>
+  <li>Based on your exploration of these three mechanisms, explain how you can use a set of cyclic voltammetry experiments to deduce whether a system is following an E, and EC, or a CE mechanism. Assume a <em>k</em><sup>o</sup> of 10<sup>0</sup> cm/s for all three mechanisms, and a <em>k</em><sub>chem,f</sub> of 10<sup>0</sup> s<sup>-1</sup> for the EC and the CE mechanism.</li>
+  <li>A cyclic voltammetry analysis of p-aminophenol uses an <em>E</em><sub>start</sub> of -0.2 V and an <em>E</em><sub>switch</sub> of +0.3 V. Cyclic voltammograms collected at scan rates of 0.01, 0.02, 0.03, 0.04, and 0.05 V/s give &Delta; <em>E</em> values of, respectively, 68, 60, 60, 64, and 64 mV, and |<em>i</em><sub>p,c</sub>/<em>i</em><sub>p,a</sub>| values of, respectively 0.96, 0.95, 0.94, 0.94, and 0.93. Is the initial redox reaction an oxidation or a reduction and how many electrons are involved? Does this system show electrochemically reversible behavior? Chemically reversible behavior?</li>
+  <li>When the scan rate for the analysis of p-aminophenol is increased to 0.50 V, the peak current ratio decreases to 0.79 and &Delta; <em>E</em> increases to 108 mV. Describe the electrochemical and chemical reversibility at this scan rate.</li>
+</ol>
+
+</body>
+</html>

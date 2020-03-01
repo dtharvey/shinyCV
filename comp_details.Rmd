@@ -1,0 +1,96 @@
+---
+output: html_document
+---
+
+The cyclic voltammetry simulations in this Shiny App uses the explicit finite difference computational method outlined in Gosser, D. K. *Cyclic Voltammetry Simulation and Analysis of Reaction Mechanisms*, VCH, New York, 1993, and in Brown, J. H. *J. Chem. Educ.*, **2015**, *92*, 1490--1496. Each simulation uses separate diffusion grids to calculate and to store the concentrations of Ox and Red---and, for an EC or CE mechanism, the concentrations of Z---as a function of distance from the electrode's surface and as a function of elapsed time as the potential is swept from its starting potential to the switching potential and back to the starting potential. Each diffusion grid is a matrix with $n_{i}$ rows and $n_{j}$ columns where a row is a discrete moment in time and a column is a discrete distance from the electrode surface; thus, for example, matrix element [Ox]~*i, j*~ stores the concentration of Ox at time *i* and at distance *j*.
+
+The mass transfer of Ox, Red, and Z are governed by Fick's Second Law of Diffusion
+
+$$\frac {\delta C} {\delta t} = D \frac {\delta^{2}C} {\delta x^{2}}$$
+
+where $C$ is a species' concentration, $D$ is its diffusion coefficient, and $\delta t$ and $\delta x$ are increments in time and distance, respectively. When using the explicit finite difference method, Fick's Second Law is approximated as
+
+$$\frac {C_{i, j} - C_{i-1, j}} {\Delta t} = D \left[ \frac {C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1}} {\Delta x^{2}} \right]$$
+
+which means that the element $C_{i,j}$ in a diffusion grid is
+
+$$C_{i, j} = C_{i-1, j} + \lambda \left[ C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1} \right]$$
+
+where $\lambda$ is equivalent to $\frac {D \Delta t} {\Delta x^{2}}$. In essence, this approximation assumes that for each unit of time, diffusion is limited to movement between adjacent locations in the diffusion grid.
+
+Because each element in a diffusion grid is calculated using values from the immediately preceding increment in time and using values from distances that are immediately adjacent, we cannot use this approach to calculate elements in the diffusion grid's first column, its last column, and its first row. The elements in a diffusion grid's last column, which is the distance furthest from the electrode's surface, are filled using that species' initial concentration in bulk solution; that is, the diffusion grid's width, which is defined as $6 \times \sqrt{Dt_{\textrm{total}}}$, where $t_{\textrm{total}}$ is the time to complete the cyclic voltammetry experiment, is sufficient to ensure that the diffusion layer never extends beyond the diffusion grid's last column. The elements in a diffusion grid's first row, which is for time $t = 0$, also are filled using that species' concentration in bulk solution. 
+
+For the E and the EC mechanisms, the concentration of either Ox or Red in bulk solution is greater than zero and the concentration in bulk solution of the other species---and the bulk concentration of Z for the EC mechanism---is zero. For the CE mechanism, the combined concentrations of either Z and Ox, or of Z and Red is greater than zero, with their individual amounts determined by the relative rates of the forward and reverse chemical reactions; the bulk concentration of the remaining species is zero.
+
+To calculate the concentrations of Ox and of Red at the electrode's surface---that is, to fill the diffusion grid's first column---we first calculate the flux of Ox, $J_{\textrm{Ox}}$, to the electrode's surface using the concentrations of Ox and of Red in the increment immediately adjacent to the electrode's surface
+
+$$J_{\textrm{Ox}} = - \frac {k_{f}[\textrm{Ox}]_{i,2} - k_{b}[\textrm{Red}]_{i, 2}} {1 + \frac {k_{f} \Delta x} {D} + \frac {k_{b} \Delta x} {D}}$$
+
+The potential-dependent, heterogeneous electron-transfer rate constants, $k_{f}$ and $k_{b}$, are calculated using the Butler-Volmer equation
+
+$$k_{f} = k^{\textrm{o}}e^{-\alpha n F (E - E^{\textrm{o}})/RT}$$
+
+$$k_{b} = k^{\textrm{o}}e^{(1 - \alpha) n F (E - E^{\textrm{o}})/RT}$$
+
+where $k^{\textrm{o}}$ is the potential-independent, heterogeneous electron-transfer rate constant, $\alpha$ is the transfer coefficient, $n$ is the number of electrons in the redox reaction, $E$ is the applied potential, $E^{\textrm{o}}$ is the redox couple's formal potential, $F$ is Faraday's constant, $R$ is the gas constant, and $T$ is the temperature in Kelvin. The concentration of Ox at the electrode's surface, therefore, is
+
+$$[\textrm{Ox}]_{i, 1} = [\textrm{Ox}]_{i, 2} + \frac {J_{\textrm{Ox}} \Delta x} {D}$$
+
+Because the flux of Red is equal in magnitude but opposite in sign, we also know that
+
+$$J_{\textrm{Red}} = -J_{\textrm{Ox}}$$
+
+$$[\textrm{Red}]_{i, 1} = [\textrm{Red}]_{i, 2} + \frac {J_{\textrm{Red}} \Delta x} {D}$$
+
+By definition, the flux of Z at the electrode surface is zero and
+
+$$[\textrm{Z}]_{i, 1} = [\textrm{Z}]_{i, 2}$$
+
+Finally, the total current at each increment in time is calculated using the flux for Ox
+
+$$i = -n F A J_{\textrm{Ox}}$$
+
+where $A$ is the electrode's surface area.
+
+For a mechanism that includes a chemical reaction, the concentrations of Ox, Red, and Z are modified to include contributions from the chemical reactions. For example, the concentration of Ox in a CE mechanism where it is in equilibrium with Z is
+
+$$C_{i, j} = C_{i-1, j} + \lambda \left[ C_{i-1, j-1} - 2C_{i-1, j} + C_{i-1, j+1} \right] + k_{\textrm{chem,f}} \Delta t C_{i-1, j} - k_{\textrm{chem,r}} \Delta t C_{i-1, j}$$
+
+where $k_{\textrm{chem,f}}$ and $k_{\textrm{chem,r}}$ are the homogeneous first-order rate constants for the chemical reaction's forward and reverse directions.
+
+### Accuracy of the Cyclic Voltammetry Simulations
+
+An important constraint on these simulations is that diffusion is limited to adjacent points on the diffusion grid, which, in turn, requires that
+
+$$\frac {D \Delta t} {\Delta x^2} \le 0.5$$
+
+As $\Delta t = \frac {t_{\textrm{total}}} {n_{\Delta t}}$ and $\Delta x = \frac {x_{\textrm{total}}} {\Delta x} = \frac {6 \sqrt{D \times t_{\textrm{total}}}} {n_{\Delta x}}$, where $n_{\Delta x}$ is the number of increments in distance and $n_{\Delta t}$ is the number of increments in time, the number of increments in distance and the number of increments in time must satisfy the relationship
+
+$$n_{\Delta x} < \sqrt{18 \times n_{\Delta t}}$$
+
+When this is not the case, the simulation results in oscillations in the calculated current.
+
+The accuracy of a cyclic voltammetry simulation improves if we use more discrete time units and more discrete distance units---subject to the constraint described above---as these determine the increments in time, $\Delta t$, and in distance, $\Delta x$, both of which affect the calculated values for $C_{i,j}$, for $J_{\textrm{Ox}}$ and for $J_{\textrm{Red}}$, and for $i$. In addition, for any scan rate, the number of time units determines the increments in applied potential, $\Delta E$, which affects the calculated values for $k_{f}$ and $k_{b}$, and, therefore, the calculated values for $J_{\textrm{Ox}}$, $J_{\textrm{Red}}$, and $i$. 
+
+Although increasing the number of time units improves accuracy, it does so at an increase in the time needed to complete the computations and, as a result, the smoothness of the app's response to a change in a parameter's value. For example, using the default conditions for the E mechanism generates these results, where $\Delta E$, which has an expected value of 59 mV, serves as a proxy for accuracy 
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+nt = c(200, 1000, 2000, 4000, 10000)
+nx = c(50, 100, 180, 260, 420)
+ct = c(0.02, 0.2, 0.6, 1.8, 7.3)
+de = c(80, 69, 66, 62, 61)
+df = data.frame(nt, nx, ct, de)
+names(df) = c("number of time units", "number of distance units", "run-time (s)", paste0("\u0394", "E (V)"))
+kable(df) %>%
+  kable_styling(bootstrap_options = "striped","responsive", position = "center", full_width = FALSE)
+```
+
+For the simulations in this app there are 2000 discrete intervals in time and 180 discrete intervals in distance, which provides a suitable compromise between accuracy and run-time. Note that these options result in individual diffusion grids with 360,000 individual elements! 
+
+For the EC and the CE mechanisms, Gosser suggests that accuracy is reasonable if the number of increments in time satisfies the relationship
+
+$$n_{\Delta t} \ge 4 \times t_{\textrm{exp}} \times k_{\textrm{chem}}$$
+
+where $t_{\textrm{exp}}$ is the time to complete the scan and $k_{\textrm{chem}}$ is the homogeneous chemical rate constant. This places constraints on the choices for the scan rate, and the chemical rate constants $k_{\textrm{chem,f}}$ and $k_{\textrm{chem,r}}$, which are reflected on the ranges made available in their simulations.

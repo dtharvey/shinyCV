@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<body>
+
+<p>This Shiny app simulates cyclic voltammetry experiments using the computational method outlined in Gosser, D. K. <em>Cyclic Voltammetry Simulation and Analysis of Reaction Mechanisms</em>, VCH, New York, 1993  and in Brown, J. H., <em>J. Chem. Educ.</em>, <b>2015</b>, <em>92</em>, 1490-1496. See the <b>Computational Details</b> tab for additional information. The functions used in this app are drawn from those included in the <code>R</code> package <code>eChem</code>, which is available through <a href="https://CRAN.R-project.org/package=eChem">CRAN</a> or through <a href="https://github.com/dtharvey/eChem">GitHub</a>.</p>
+
+<h4>Available Mechanisms</h4>
+
+<ul>
+<li><b>E</b>: An oxidation or a reduction reaction that takes one of the following forms
+<ul>
+  <li>Ox + <em>n</em>e<sup>-</sup> <span>&#8644;</span> Red</li>
+  <li>Red <span>&#8644;</span> Ox + <em>n</em>e<sup>-</sup></li>
+</ul>
+</li>
+<li><b>EC</b>: An oxidation or a reduction reaction followed by a chemical reaction that takes one of the following forms 
+<ul>
+  <li>Ox + <em>n</em>e<sup>-</sup> <span>&#8644;</span> Red followed by Red <span>&#8644;</span> Z</li>
+  <li>Red <span>&#8644;</span> Ox + <em>n</em>e<sup>-</sup> followed by Ox <span>&#8644;</span> Z</li>
+</ul>
+</li>  
+<li><b>CE</b>: An oxidation or a reduction reaction preceded by a chemical reaction that takes one of the following forms
+<ul>
+  <li>Z <span>&#8644;</span> Ox followed by Ox + <em>n</em>e<sup>-</sup> <span>&#8644;</span> Red</li>
+  <li>Z <span>&#8644;</span> Red followed by Red <span>&#8644;</span> Ox + <em>n</em>e<sup>-</sup></li>
+</ul>
+</li>
+</ul>
+
+<h4>How to Use the Simulations</h4>
+
+<p>For each mechanism the parameters used to simulate the cyclic voltammetry experiment are divided into five groups</p>
+
+<ul>
+  <li><b>Redox Reaction</b>: initial direction, number of electrons, and transfer coefficient</li>
+  <li><b>Redox Species</b>: formal potential, bulk concentration, and diffusion coefficient</li>
+  <li><b>Potentials</b>: starting potential, switching potential, and scan rate</li>
+  <li><b>Rate Constants</b>: heterogeneous charge-transfer rate constant, homogeneous first-order rate constants for the forward and the reverse chemical reaction</li>
+  <li><b>Miscellaneous</b>: electrode's surface area and temperature</li>
+</ul>
+
+<p>which are gathered at the bottom of each mechanism's page; additional details are included on the <b>Parameters</b> tab.</p>
+
+<p>The three plots at the top of each mechanism's page show the applied potential as a function of time, the current as a function of applied potential, and the concentrations of Ox, Red, and, where appropriate, Z, as a function of distance from the electrode's surface. The middle plot, which is the cyclic voltammogram, is annotated with its characteristic peak potentials and peak currents, and values for &#916;<em>E</em><sub>p</sub>, <em>E</em><sub>avg</sub> and |<em>i</em><sub>p,c</sub>/<em>i</em><sub>p,a</sub>| or |<em>i</em><sub>p,a</sub>/<em>i</em><sub>p,c</sub>|. Use the sliders included with the plots to select the potential and time, and the concentration limits for the diffusion profiles in the plot on the right.</p>
+
+<p><em><b>Note: When first loading a mechanism's page there is a short delay to initialize and populate the layout; once loaded, updates to the page are much quicker.</b></em></p>
+
+</body>
+</html>

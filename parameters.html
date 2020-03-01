@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<body>
+
+<h4>Redox Reaction</h4>
+<ul>
+  <li><b>direction</b>: pop-up menu with choices of Ox --> Red or Red --> Ox for the redox reaction's initial direction; defaults to Ox --> Red</li>
+  <li><b>number of electrons (<em>n</em>)</b>: radio buttons that provide options for the number of electrons in the redox reaction; defaults to a one electron oxidation or reduction reaction</li>
+  <li><b>transfer coefficient (&alpha;)</b>: adjustable slider with limits of 0.1 and 0.9; defaults to 0.5</li>
+</ul>
+
+<h4>Redox Species</h4>
+<ul>
+  <li><b>standard state formal reduction potential (<em>E</em><sup>o</sup>&prime;)</b>: adjustable slider with limits of +1.5 V and -1.5 V; defaults to 0 V</li>
+  <li><b>bulk concentration ([Ox], [Red], [Z + Ox], or [Z + Red]</b>: adjustable slider with limits of 0.01 mM and 10 mM for the bulk concentration of the initial redox species; for the CE mechanism, the initial bulk concentration is the combined concentration of Z and Ox for Z &#8644; Ox followed by Ox + <em>n</em>e<sup>-</sup> &#8644; Red, and the combined concentrations of Z and Red for Z &#8644; Red followed by Red &#8644; Red + <em>n</em>e<sup>-</sup>; defaults to 1mM for all mechanisms</li>
+  <li><b>diffusion coefficient (<em>D</em>)</b>: adjustable slider with limits of 1&times;10<sup>-6</sup> cm<sup>2</sup>/cm and 1&times;10<sup>-4</sup> cm<sup>2</sup>/cm with the value assigned to all species; defaults to 1&times;10<sup>-5</sup> cm<sup>2</sup>/cm</li>
+</ul>
+
+<h4>Potentials</h4>
+<ul>
+  <li><b>initial potential (<em>E</em><sub>start</sub>)</b>: adjustable slider with limits determined by the redox reaction's formal potential and the reaction's direction; limits are +2 V and <em>E</em><sup>o</sup> + 0.25 V for Ox --> Red, and <em>E</em><sup>o</sup> - 0.25 V and -2 V for Red --> Ox; defaults to <em>E</em><sup>o</sup> + 0.5 V for Ox --> Red</li>
+  <li><b>switching potential (<em>E</em><sub>switch</sub>)</b>: adjustable slider with limits determined by the redox reaction's formal potential and the reaction's direction; limits are <em>E</em><sup>o</sup> - 0.25 V and -2 V for Ox --> Red, and are <em>E</em><sup>o</sup> + 0.25 V and +2 V for Red --> Ox; defaults to <em>E</em><sup>o</sup> - 0.5 V for Ox --> Red</li>
+  <li><b>scan rate (&nu;)</b>: adjustable slider with limits of 1&times;10<sup>-3</sup> V/s (0.001 V/s) and 1&times;10<sup>3</sup> V/s (1000 V/s) for the E mechanism, and limits of 1&times;10<sup>0</sup> V/s (1 V/s) and 1&times;10<sup>2</sup> V/s (100 V/s) for the EC and CE mechanisms; note that the scale is logarithmic due to the wide range of possible values; defaults to 1&times;10<sup>0</sup> or 1 V/s for all three mechanisms</li>
+</ul>
+
+<h4>Rate Constants</h4>
+<ul>
+  <li><b>heterogeneous charge-transfer rate constant (<em>k</em><sup>o</sup>)</b>: adjustable slider with limits of 1&times;10<sup>-3</sup> cm/s (0.001 cm/s) and 1&times;10<sup>3</sup> cm/s (1000 cm/s); defaults to 1&times;10<sup>-0</sup> cm/s or 1 cm/s</li>
+  <li><b>homogeneous first-order forward chemical rate constant (<em>k</em><sub>chem,f</sub>)</b>: adjustable slider with limits of 1&times;10<sup>-2</sup> cm/s (0.01 cm/s) and 1&times;10<sup>2</sup> cm/s (100 cm/s); available only for the EC and the CE mechanisms where it defaults to 1&times;10<sup>0</sup> cm/s or 1 cm/s</li>
+  <li><b>homogeneous first-order reverse chemical rate constant (<em>k</em><sub>chem,r</sub>)</b>: adjustable slider with limits of 1&times;10<sup>-2</sup> cm/s (0.01 cm/s) and 1&times;10<sup>2</sup> cm/s (100 cm/s); available only for the EC and the CE mechanisms where it defaults to 1&times;10<sup>0</sup> cm/s or 1 cm/s</li>
+</ul>
+
+<h4>Miscellaneous</h4>
+<ul>
+  <li><b>temperature (<em>T</em>)</b>: adjustable slider with limits of 280 K and 370 K; defaults to 298 K</li>
+  <li><b>electrode area (<em>A</em>)</b>: adjustable slider with limits of 0.001 cm<sup>2</sup> and 0.1 cm<sup>2</sup>; defaults to 0.01 cm<sup>2</sup></li>
+  <li><b>reset</b>: button that returns all parameters to their original values</li>
+</ul>
+
+</body>
+</html>
